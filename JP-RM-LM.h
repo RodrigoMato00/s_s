@@ -12,29 +12,45 @@
 #include <signal.h>
 
 /**
- *struct linked - structure for the implementation of Linkedlist (PATH)
+ *struct direc - structure for the implementation of Linkedlist (PATH)
  *@a: directory path
  *@next: pointer a next node
  */
-typedef struct linked
+typedef struct direc
 {
 	char * jeje;
-	struct linked * next;
-} Mystruct;
+	struct direc * next;
+} PDIRECT;
 
 /**
- *struct cd - structure for function cd
+ *struct chdirect - structure for function cd
  *@jeje: directory path
  *@cde: indicated to cd calling
  */
-typedef structure cd
+typedef struct chdirect
 {
 	char *jeje;
 	int cde;
-} cdstruct;
+} CHDIRECT;
 
+char *_getenv(const char *name);
+int checkenv(char **p);
+int main(int argc __attribute__ ((unused)), char **argv);
 char *_str_token(char *jeje, char *d);
 int str_len(char *jeje);
 int counter(char *jeje);
+void _itoa(int a, char *c);
+int changedir(char **p, CHDIRECT *predirect);
+int _strcmp(char *s1, char *s2);
+char *_strdup(char *jeje);
+char *findcommand(PDIRECT *head, char *commandinput);
+void _itoa(int a, char *c);
+PDIRECT *linkedpath(void);
+int _atoi(char *jeje);
+int checkexit(char **token);
+void __exit(int errnum, char **p, char *getline, PDIRECT *head, char *fc, char *predirect);
+void errmessage(char **c, char *p, int i);
+void CDerrmessage(char **c, char *p, int i);
+extern char **environ;
 
 #endif

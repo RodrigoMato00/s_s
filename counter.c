@@ -18,7 +18,7 @@ int counter(char *jeje)
 	if (jeje[a] == '\0' || jeje[a] == '\n')
 		return (0);
 
-	while (s[i] != '\0')
+	while (jeje[a] != '\0')
 	{
 		tc++;
 		while (jeje[a] != ' ' && jeje[a] != '\0')

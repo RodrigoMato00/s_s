@@ -1,4 +1,4 @@
-#include "JP-RM-LM.c"
+#include "JP-RM-LM.h"
 
 /**
  *str_token - tokenizes a string
@@ -13,9 +13,9 @@ char *_str_token(char *jeje, char *d)
 	static int large;
 	static char *cpy;
 
-	if (s != NULL)
+	if (jeje != NULL)
 	{
-		length = str_len(jeje);
+		large = str_len(jeje);
 		while (jeje[a] != '\0')
 		{
 			for (b = 0; d[b] != '\0'; b++)
