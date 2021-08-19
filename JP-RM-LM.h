@@ -34,7 +34,7 @@ typedef struct chdirect
 } CHDIRECT;
 
 char *_getenv(const char *name);
-void exec_handler(char  **storetoken,  struct CHDIRECT predirect, char **argv, char *cmdinpath, char ¨*strinput, struct PDIRECT *head, int count);
+void exec_handler(char  **storetoken, CHDIRECT predirect, char **argv, char *cmdinpath, char ¨*strinput, PDIRECT *head, int count);
 int checkenv(char **p);
 int main(int argc __attribute__ ((unused)), char **argv);
 char *_str_token(char *jeje, char *d);
