@@ -9,9 +9,8 @@
 int main(int argc __attribute__ ((unused)), char **argv)
 {
 	char *strinput = NULL, *token = NULL, **storetoken = NULL, *cmdinpath = NULL, *delim = "\n ",  prompt[] = "($) ";
-	int readnum, i = 0, errnum = 0, size = 0, count = 0, CDvalue = 0, cerrnum = 0;
+	int readnum, i = 0, errnum = 0, size = 0, count = 0, CDvalue = 0;
 	size_t len = 0;
-	pid_t childpid;
 	PDIRECT *head = NULL;
 	CHDIRECT predirect;
 
@@ -47,10 +46,10 @@ int main(int argc __attribute__ ((unused)), char **argv)
 		}
 		i = 0;
 		CDvalue = changedir(storetoken, &predirect);
-		
+
 		if (CDvalue  == -1)
 			CDerrmessage(storetoken, argv[0], count);
-		exec_handler(char  **storetoken,  CHDIRECT predirect, char **argv, char *cmdinpath, char *strinput,  PDIRECT *head, int count);
+		exec_handler(storetoken, predirect,  cmdinpath, strinput, head);
 		if (storetoken)
 			free(storetoken);
 	}

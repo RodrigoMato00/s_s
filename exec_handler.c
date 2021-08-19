@@ -6,7 +6,7 @@
  *
  *
  */
-void exec_handler(char  **storetoken,  CHDIRECT predirect, char **argv, char *cmdinpath, char *strinput,  PDIRECT *head, int count)
+void exec_handler(char  **storetoken,  CHDIRECT predirect, char *cmdinpath, char *strinput,  PDIRECT *head)
 {
 	pid_t childpid;
 	int errnum = 0, cerrnum = 0;
