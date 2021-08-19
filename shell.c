@@ -46,41 +46,11 @@ int main(int argc __attribute__ ((unused)), char **argv)
 			storetoken[i++] = token;
 		}
 		i = 0;
-
 		CDvalue = changedir(storetoken, &predirect);
+		
 		if (CDvalue  == -1)
 			CDerrmessage(storetoken, argv[0], count);
-
-		childpid = fork();
-
-		if (childpid == -1)
-			__exit(errnum, storetoken, strinput, head, cmdinpath, predirect.jeje);
-
-		if (childpid == 0)
-		{
-
-			if (checkenv(storetoken))
-				__exit(errnum, storetoken, strinput, head, cmdinpath, predirect.jeje);
-			cerrnum = checkexit(storetoken);
-			if (cerrnum != -1)
-				__exit(cerrnum, storetoken, strinput, head, cmdinpath, predirect.jeje);
-
-			execve(storetoken[0], storetoken, environ);
-			cmdinpath = findcommand(head, storetoken[0]);
-			execve(cmdinpath, storetoken, environ);
-			if (!predirect.cde)
-				errmessage(storetoken, argv[0], count);
-			errnum = 0;
-			__exit(errnum, storetoken, strinput, head, cmdinpath, predirect.jeje);
-		}
-		else
-		{
-			wait(NULL);
-			cerrnum = checkexit(storetoken);
-			if (cerrnum != -1)
-				__exit(cerrnum, storetoken, strinput, head, cmdinpath, predirect.jeje);
-
-		}
+		exec_handler(char  **storetoken,  CHDIRECT predirect, char **argv, char *cmdinpath, char *strinput,  PDIRECT *head, int count);
 		if (storetoken)
 			free(storetoken);
 	}
