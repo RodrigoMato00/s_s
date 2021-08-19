@@ -8,18 +8,8 @@
  */
 int main(int argc __attribute__ ((unused)), char **argv)
 {
-	char *strinput = NULL;
-	char *token = NULL;
-	char **storetoken = NULL;
-	char *cmdinpath = NULL;
-	char *delim = "\n ";
-	char prompt[] = "($) ";
-	int readnum, i = 0;
-	int errnum = 0;
-        int size = 0;
-	int count = 0;
-	int CDvalue = 0;
-	int  cerrnum = 0;
+	char *strinput = NULL, *token = NULL, **storetoken = NULL, *cmdinpath = NULL, *delim = "\n ",  prompt[] = "($) ";
+	int readnum, i = 0, errnum = 0, size = 0, count = 0, CDvalue = 0, cerrnum = 0;
 	size_t len = 0;
 	pid_t childpid;
 	PDIRECT *head = NULL;
@@ -56,41 +46,11 @@ int main(int argc __attribute__ ((unused)), char **argv)
 			storetoken[i++] = token;
 		}
 		i = 0;
-
 		CDvalue = changedir(storetoken, &predirect);
+		
 		if (CDvalue  == -1)
 			CDerrmessage(storetoken, argv[0], count);
-
-		childpid = fork();
-
-		if (childpid == -1)
-			__exit(errnum, storetoken, strinput, head, cmdinpath, predirect.jeje);
-
-		if (childpid == 0)
-		{
-
-			if (checkenv(storetoken))
-				__exit(errnum, storetoken, strinput, head, cmdinpath, predirect.jeje);
-			cerrnum = checkexit(storetoken);
-			if (cerrnum != -1)
-				__exit(cerrnum, storetoken, strinput, head, cmdinpath, predirect.jeje);
-
-			execve(storetoken[0], storetoken, environ);
-			cmdinpath = findcommand(head, storetoken[0]);
-			execve(cmdinpath, storetoken, environ);
-			if (!predirect.cde)
-				errmessage(storetoken, argv[0], count);
-			errnum = 0;
-			__exit(errnum, storetoken, strinput, head, cmdinpath, predirect.jeje);
-		}
-		else
-		{
-			wait(NULL);
-			cerrnum = checkexit(storetoken);
-			if (cerrnum != -1)
-				__exit(cerrnum, storetoken, strinput, head, cmdinpath, predirect.jeje);
-
-		}
+		exec_handler(char  **storetoken,  CHDIRECT predirect, char **argv, char *cmdinpath, char *strinput,  PDIRECT *head, int count);
 		if (storetoken)
 			free(storetoken);
 	}
