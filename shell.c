@@ -3,7 +3,7 @@
 /**
  *main - jwdfaoiwijfdoiajdsf
  *@argc: oaiwdjfailsdjfpoiafj
- *@arv: dmcówc´poc´paocó
+ *@argv: dmcówc´poc´paocó
  *Return: peiorjwpoifmomoicw
  */
 int main(int argc __attribute__ ((unused)), char **argv)
