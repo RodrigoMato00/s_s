@@ -37,10 +37,12 @@ int main(int argc __attribute__ ((unused)), char **argv)
 			continue;
 		token = _str_token(strinput, delim);
 
+		printf("allocated array\n");
 		storetoken = malloc(sizeof(char *) * size);
 		storetoken[i++] = token;
 		while (token != NULL)
 		{
+			printf("allocated: %s\n", token);
 			token = _str_token(NULL, delim);
 			storetoken[i++] = token;
 		}
@@ -51,7 +53,10 @@ int main(int argc __attribute__ ((unused)), char **argv)
 			CDerrmessage(storetoken, argv[0], count);
 		exec_handler(storetoken, predirect,  cmdinpath, strinput, head);
 		if (storetoken)
+		{
+			printf("free: array");
 			free(storetoken);
+		}
 	}
 	return (0);
 }

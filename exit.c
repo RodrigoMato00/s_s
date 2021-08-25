@@ -38,11 +38,17 @@ void __exit(int errnum, char **p, char *getline, PDIRECT *head, char *fc, char *
 	PDIRECT *tmp;
 
 	if (p)
+	{
 		free(p);
+	}
 	if (getline)
+	{
+		printf("free: %s\n", getline);
 		free(getline);
+	}
 	while (head)
 	{
+		printf("free: %s\n", getline);
 		tmp = head->next;
 		free(head);
 		head = tmp;

@@ -1,10 +1,12 @@
 #include "JP-RM-LM.h"
 
 /**
- *
- *
- *
- *
+ *exec_handler - 
+ *@storetoken:
+ *@predirect:
+ *@cmdinpath:
+ *@strinput:
+ *head:
  */
 void exec_handler(char  **storetoken,  CHDIRECT predirect, char *cmdinpath, char *strinput,  PDIRECT *head)
 {
@@ -28,6 +30,5 @@ void exec_handler(char  **storetoken,  CHDIRECT predirect, char *cmdinpath, char
 			execve(storetoken[0], storetoken, environ);
 			cmdinpath = findcommand(head, storetoken[0]);
 			execve(cmdinpath, storetoken, environ);
+		}
 }
-}
-
